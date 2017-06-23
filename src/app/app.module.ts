@@ -9,6 +9,7 @@ import { RouterModule } from "@angular/router";
 import { APP_ROUTES } from "app/app.routes";
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { FlightService } from './flight-search/flight.service';
+import { FlightCardComponent } from './flight-search/flight-card.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { FlightService } from './flight-search/flight.service';
     AppComponent,
     HomeComponent,
     AboutComponent,
-    FlightSearchComponent
+    FlightSearchComponent,
+    FlightCardComponent
   ],
   providers: [
     // { provide: FlightService, useClass: FlightService }
