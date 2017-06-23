@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Flight } from '../entities/flight';
 import { Http, Headers, URLSearchParams } from '@angular/http';
+import { FlightService } from './flight.service';
 
 @Component({
   selector: 'flight-search',
-  templateUrl: './flight-search.component.html'
+  templateUrl: './flight-search.component.html',
+  providers: [FlightService]
 })
 export class FlightSearchComponent {
 
@@ -15,25 +17,16 @@ export class FlightSearchComponent {
 
   //private http: Http;
 
-  constructor(private http: Http) {
+  constructor(private flightService: FlightService) {
     //this.http = http;
+    console.debug('Liebesgrüße aus dem Konstruktor!');
   }
 
   search(): void {
 
-    let search = new URLSearchParams();
-    search.set('from', this.from);
-    search.set('to', this.to);
-
-    let headers = new Headers();
-    headers.set('Accept', 'application/json');
-
-    let url = 'http://www.angular.at/api/flight';
-
     this
-      .http
-      .get(url, { search, headers })
-      .map(resp => resp.json())
+      .flightService
+      .find(this.from, this.to)
       .subscribe(
         (flights) => {
           this.flights = flights;

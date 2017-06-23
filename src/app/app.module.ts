@@ -8,6 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { RouterModule } from "@angular/router";
 import { APP_ROUTES } from "app/app.routes";
 import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { FlightService } from './flight-search/flight.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,10 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
     AboutComponent,
     FlightSearchComponent
   ],
-  providers: [],
+  providers: [
+    // { provide: FlightService, useClass: FlightService }
+    // FlightService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
